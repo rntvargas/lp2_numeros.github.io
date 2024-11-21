@@ -86,6 +86,21 @@
       flex: 1;
     }
 
+    .leftside {
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 4%;
+    }
+
+    #sketchpad {
+      display: block; /* Centra el lienzo */
+      margin: 0 auto; /* Centra horizontalmente */
+      height: 250px;
+      width: 250px;
+      border: 2px solid #888;
+      border-radius: 4px;
+    }
+
     p {
       font-family: 'Source Code Pro', monospace, sans-serif;
       margin-top: 1%;
@@ -107,16 +122,15 @@
 
     <section id="content">
       <div id="sketchpadapp">
-        <div class="row">
-          <div class="leftside">
-            <canvas id="sketchpad" height="200" width="200"></canvas>
+        <div class="row justify-content-center">
+          <div class="leftside col-md-6">
+            <canvas id="sketchpad"></canvas>
             <div class="buttons_div">
               <button type="button" class="btn btn-dark" id="predict_button">Predecir</button>
               <button type="button" class="btn btn-dark" id="clear_button">&nbsp Borrar &nbsp</button>
             </div>
           </div>
-
-          <div class="predicted_answer col-sm-6">
+          <div class="predicted_answer col-md-6 text-center">
             <h2 id="prediction_heading">Predicción</h2>
             <h1 id="result">-</h1>
             <p id="confidence">Porcentaje: -</p>
@@ -139,4 +153,5 @@
 </body>
 
 </html>
+
 
