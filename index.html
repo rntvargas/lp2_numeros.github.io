@@ -1,155 +1,76 @@
-<!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Numeritos</title>
 
-  <!-- Google Fonts -->
+  <meta name="viewport" content="width=device-width">
+  <!-- GoogleFont -->
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Calistoga|Josefin+Sans:400,700|Pacifico&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap -->
+  <!-- bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <!-- FontAwesome -->
+  <!-- stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- fontawesome -->
   <script src="https://kit.fontawesome.com/b3aed9cb07.js" crossorigin="anonymous"></script>
-
-  <!-- Estilos personalizados -->
-  <style>
-    /* Evitar selección de texto en el sketchpad */
-    #sketchpadapp {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    #content {
-      margin: 0 auto;
-      padding: 2% 15%;
-      padding-bottom: 0;
-    }
-
-    .welcome {
-      text-align: center;
-      position: relative;
-      color: honeydew;
-      background-color: deepskyblue;
-      padding: 1%;
-      font-weight: bold;
-      font-family: 'Prompt', sans-serif;
-    }
-
-    .btn {
-      font-size: 15px;
-      padding: 10px;
-      background: #eee;
-      border: 1px solid #888;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .heading {
-      font-family: 'Varela Round', sans-serif;
-      font-weight: 700;
-      font-size: 3rem;
-      display: inline;
-    }
-
-    #footer {
-      text-align: center;
-      background-color: #292b2c;
-      color: #fff;
-      padding: 1% 0;
-      margin-top: auto;
-    }
-
-    #result {
-      font-family: 'Pacifico', cursive;
-      font-size: 5rem;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
-    }
-
-    main {
-      flex: 1;
-    }
-
-    .leftside {
-      text-align: center;
-      margin: 0 auto;
-      margin-top: 4%;
-    }
-
-    #sketchpad {
-      display: block; /* Centra el lienzo */
-      margin: 0 auto; /* Centra horizontalmente */
-      height: 250px;
-      width: 250px;
-      border: 2px solid #888;
-      border-radius: 4px;
-    }
-
-    p {
-      font-family: 'Source Code Pro', monospace, sans-serif;
-      margin-top: 1%;
-    }
-  </style>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
 
 </head>
 
 <body onload="init()">
-  <header>
-    <h1 class="welcome">¡Predicción de números!</h1>
-  </header>
 
-  <main>
-    <section id="title">
-      <h1 class="heading">Predis</h1>
-      <p>La red neuronal convolucional se entrena con el conjunto de datos MNIST en Keras. Además, el modelo entrenado y los pesos se guardan como archivo JSON y archivo .h5. Por último, el modelo se convierte al formato de TensorFlow.js y se utiliza para predicciones.</p>
-    </section>
+ 
+  <h1 class="welcome">Prediccion de numeros !</h1>
+  <section id="title">
+    <h1 class="heading">predis</h1>
+    <p>La red neuronal convolucional se entrena con el conjunto de datos MNIST en Keras. Además, el modelo entrenado y los pesos se guardan como archivo json y archivo .h5. Por último, el modelo se convierte al formato de capa Tensorflow.js y se utiliza js para la predicción.</p>
+  </section>
 
-    <section id="content">
-      <div id="sketchpadapp">
-        <div class="row justify-content-center">
-          <div class="leftside col-md-6">
-            <canvas id="sketchpad"></canvas>
-            <div class="buttons_div">
-              <button type="button" class="btn btn-dark" id="predict_button">Predecir</button>
-              <button type="button" class="btn btn-dark" id="clear_button">&nbsp Borrar &nbsp</button>
-            </div>
+  <section id="content">
+    <div id="sketchpadapp">
+
+      <div class="row">
+        <div class="leftside">
+
+          <div class="">
+            <canvas id="sketchpad" height="200" width="200">
+            </canvas>
           </div>
-          <div class="predicted_answer col-md-6 text-center">
-            <h2 id="prediction_heading">Predicción</h2>
-            <h1 id="result">-</h1>
-            <p id="confidence">Porcentaje: -</p>
+
+          <div class="buttons_div">
+            <button type="button" class="btn btn-dark" id="predict_button">Predict</button>
+            <button type="button" class="btn btn-dark" id="clear_button">&nbsp Clear &nbsp</button>
           </div>
         </div>
+
+        <div class="predicted_answer col-sm-6">
+          <h2 id="prediction_heading">Prediction</h2>
+          <h1 id="result">-</h1>
+          <p id="confidence">Confidence: -</p>
+        </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>  
+
 
   <footer id="footer">
-    <p>Desarrollado con ❤️ y TensorFlow.js</p>
-  </footer>
+    Desarrollado con ❤️ y TensorFlow.js
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6Jty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+</footer>
+<footer id="footer">
+  ren
+  
+</footer>
+
+
   <script src="js/main.js" charset="utf-8"></script>
+
 </body>
 
 </html>
